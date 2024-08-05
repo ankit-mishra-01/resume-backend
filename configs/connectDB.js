@@ -1,16 +1,12 @@
 import mongoose from "mongoose";
 
-export function connectDB(DB_URL) {
-  const options = {
-    dbName: "resume",
-  };
+export default function connectDB(DB_URL, options) {
   mongoose
     .connect(DB_URL, options)
     .then(() => {
-      console.log("✅ Database connected successfully");
+      console.log("✅ Database Connected successfully");
     })
     .catch((error) => {
-      console.log("Error:", error);
-    })
-    .finally(() => process.exit());
+      console.log(error.message);
+    });
 }
